@@ -5,35 +5,39 @@ import java.awt.*;
 import com.cajero.*;
 
 public class SeleccionIdioma extends JPanel {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
+
     public SeleccionIdioma(CajeroSwing cajero) {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(null); // Usamos layout null para un control completo sobre la posición de los componentes
         setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
+        // Título
         JLabel title = new JLabel("Seleccione idioma / Select language");
         title.setFont(new Font("Tahoma", Font.BOLD, 20));
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        title.setBounds(60, 30, 300, 30); // Ajustamos la posición y tamaño
         add(title);
-        add(Box.createRigidArea(new Dimension(0, 50)));
 
+        // Botones de idioma
         JButton esp = new JButton("Español");
         JButton eng = new JButton("English");
 
-        esp.setAlignmentX(Component.CENTER_ALIGNMENT);
-        eng.setAlignmentX(Component.CENTER_ALIGNMENT);
+        esp.setBounds(120, 120, 150, 30); // Ajustamos la posición y tamaño
+        eng.setBounds(120, 160, 150, 30); // Ajustamos la posición y tamaño
 
+        // Acción para Español
         esp.addActionListener(e -> {
             cajero.esEspanol = true;
             cajero.mostrarMenuPrincipal();
         });
 
+        // Acción para Inglés
         eng.addActionListener(e -> {
             cajero.esEspanol = false;
             cajero.mostrarMenuPrincipal();
         });
 
+        // Añadir botones a la interfaz
         add(esp);
-        add(Box.createRigidArea(new Dimension(0, 20)));
         add(eng);
     }
 }
